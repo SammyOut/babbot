@@ -35,7 +35,7 @@ setup(
     keywords='School Meal Kakaotalk Chatbot',
 
     # package
-    package=['bobbot'],
+    py_modules=['babbot'],
 
     # requirements
     install_requires=[
