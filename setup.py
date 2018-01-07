@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     # introduction
     name='babbot',
-    version='0.0.1',
+    version='1.0.0',
     url='https://github.com/RISMME/bob-bot',
     description='A package for make kakao-talk school meal bot easily',
     license='MIT',

@@ -43,7 +43,10 @@ def meal(year, month, day):
 
 
 def helper(meal_dict, key):
-    return '[{0}]\n{1}\n\n'.format(key, '\n'.join(meal_dict[key] or '정보가 없습니다.'))
+    try:
+        return '[{0}]\n{1}\n\n'.format(key, '\n'.join(meal_dict[key] or '정보가 없습니다.'))
+    except:
+        return '[{0}]\n{1}\n\n'.format(key, '정보가 없습니다.')
 
 
 @app.route('/keyboard')
@@ -51,7 +54,7 @@ def keyboard():
     return jsonify(main_keyboard)
 
 
-@app.route('/message')
+@app.route('/message', methods=['POST'])
 def message():
     content = request.get_json()['content']
 
@@ -60,7 +63,7 @@ def message():
         now += timedelta(days=1)
     elif content == '모레 급식':
         now += timedelta(days=2)
-    year, month, day = now.timetuple()
+    year, month, day = now.year, now.month, now.day
 
     message = meal(year, month, day)
 
